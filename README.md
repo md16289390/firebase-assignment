@@ -2,6 +2,8 @@ This repo is desinged to create basic signup/signin with Firebase, React, Redux 
 
 Make sure to follow the firebase init guide in the tutorial.
 
+Check Demo - [https://basic-signup.web.app/](https://basic-signup.web.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
