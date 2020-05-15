@@ -1,4 +1,5 @@
 import { myFirebase } from "../firebase/firebase";
+import { generateUserDocument } from '../firebase/firebaseMethods';
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -100,4 +101,20 @@ export const verifyAuth = () => dispatch => {
     }
     dispatch(verifySuccess());
   });
+};
+
+//Function for signup user with email/password sign-in method of firebase
+export const signupUser = (params) => dispatch => {
+  myFirebase
+    .auth()
+    .createUserWithEmailAndPassword(params.email, params.password)
+    .then(res => {
+      if (res.user){
+          dispatch(receiveLogin(res.user));
+          generateUserDocument(res.user, {displayName: params.username});
+      }
+    })
+    .catch(e => {
+      dispatch(loginError());
+    }); 
 };
